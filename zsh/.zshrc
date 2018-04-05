@@ -80,6 +80,8 @@ function precmd() {
 }
 
 
+# make os checks available
+source ~/.zmenv/os_check.sh
 # install the environment
 function source_all() {
     if [ "$#" -ne 1 ]; then
