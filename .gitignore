@@ -1,1 +1,3 @@
 vim/.vim/bundle
+*.swp
+*.swo

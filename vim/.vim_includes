@@ -1,6 +1,7 @@
 "**********************************************************
 " Vundle
 "**********************************************************
+set nocompatible
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -21,7 +22,6 @@ Plugin 'wesQ3/vim-windowswap'
 
 " git
 Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
 
 " look and feel
 Plugin 'vim-airline/vim-airline'
@@ -29,15 +29,16 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " syntax
 Plugin 'vim-syntastic/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'fatih/vim-go'
+Plugin 'b4b4r07/vim-hcl'
+Plugin 'hashivim/vim-terraform.git'
 Plugin 'burnettk/vim-angular'
 
-" tools
-Plugin 'hashivim/vim-terraform.git'
-Plugin 'hashivim/vim-nomadproject.git'
-Plugin 'hashivim/vim-consul.git'
+" fmting
 Plugin 'fatih/vim-hclfmt'
-Plugin 'b4b4r07/vim-hcl'
+
+" tools
+Bundle 'Valloric/YouCompleteMe'
 
 
 

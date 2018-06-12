@@ -18,29 +18,25 @@ Dot Packages
     * Configuration for the `zsh` shell
 
 
-Stow
-====
+Base Packages
+==============
 
-[GNU Stow](https://www.gnu.org/software/stow/) is a tool used to manage the dot files as individual packages. It's handy
-for pretty much all config management.
+First, run the `install_common.sh` script which installs a few base utilities:
 
-#### Install on Linux
+```
+$ ./install_common.sh
+```
 
-````bash
-## Using aptitude
-sudo apt-get install stow
+Primarily, it installs [GNU Stow](https://www.gnu.org/software/stow/) which is needed
+to install packages in this repo. is a tool used to manage the dot files as individual packages.
+It's handy for pretty much all config management.
 
-## using pacman
-sudo pacman -Syu stow
+Other basic packages include:
 
-## others are similar
-````
+- vim (with cmake for YCM)
+- git
+- zsh
 
-#### Install on MacOSX
-
-````bash
-sudo brew install stow
-````
 
 
 Installing Dot-File Packages
@@ -68,7 +64,7 @@ Vim
 All plugins and `YCM` will be installed using the included script:
 
 ```
-~/.vim_install.sh {YCM install.py args}
+~/.vim_install.sh {optional YCM install.py args}
 ```
 
 For an install that supports `clang`, `go`, and `rust`:

@@ -52,9 +52,9 @@ set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 
 " global swap directory
-if isdirectory('~/.vim/swapfiles')
-    set directory=~/.vim/swapfiles/
-endif
+"if isdirectory('$HOME/.vim/swapfiles')
+    set directory=$HOME/.vim/swapfiles/
+"endif
 
 " allow <leader><number> window switching
 let i = 1
@@ -81,6 +81,8 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " golang use goimports
 let g:go_fmt_command = "goimports"
+" allow older vims not generate warning (Fedora 18 has barely lower version)
+let g:go_version_warning = 0
 
 " enhanced c++ highlighting
 let g:cpp_class_scope_highlight = 1
@@ -106,6 +108,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowHidden=1
 let NERDTreeCascadeSingleChildDir=0
 let NERDTreeCascadeOpenSingleChildDir=0
+nmap <c-n> :NERDTreeToggle<CR>
 
 
 "***********************************************************
@@ -125,28 +128,15 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 "***********************************************************
-" Status Line
+" Arista
 "***********************************************************
 
-"hi plain term=bold cterm=bold ctermfg=White ctermbg=235
-"hi green term=bold cterm=bold ctermfg=107 ctermbg=235 guifg=#799d6a
-"hi orange term=bold cterm=bold ctermfg=215 ctermbg=235 guifg=#ffb964
-"
-"function! MyGitBranchStyle()
-"    let branch = GitBranch()
-"    if branch == ''
-"        let branchStyle = ''
-"    else
-"        let branchStyle = branch
-"    end
-"    return branchStyle
-"endfunction
-"
-"function! WindowNumber()
-"    let str=tabpagewinnr(tabpagenr())
-"    return str
-"endfunction
-"
-"set laststatus=2
-"set statusline=%#plain#%f\ [col:\ %#green#%c%#plain#]\ [line:\ %#green#%l%#plain#/%#orange#%L%#plain#]\ [win:\ %#green#%2{WindowNumber()}%#plain#]\ [branch:\ %#orange#%{MyGitBranchStyle()}%#plain#]
+" Include the system settings
+:if filereadable( "/etc/vimrc" )
+    source /etc/vimrc
+:endif
 
+" Include Arista-specific settings
+:if filereadable( $VIM . "/vimfiles/arista.vim" )
+    "source $VIM/vimfiles/arista.vim
+:endif
