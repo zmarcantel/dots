@@ -6,7 +6,7 @@ set -x
 source $(dirname "$0")/env/.zmenv/os_check.sh
 
 PKGS="ack stow \
-      git cmake python2.7 \
+      git cmake libpython2.7 \
       vim zsh"
 
 get_pkg_man() {
