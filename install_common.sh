@@ -3,7 +3,7 @@
 source $(dirname "$0")/env/.zmenv/os_check.sh
 
 PKGS="ack stow \
-      git cmake libpython2.7 \
+      git cmake libpython2.7 libpython-dev \
       vim zsh"
 
 get_pkg_man() {
@@ -48,7 +48,7 @@ get_pkg_names() {
     for pkg in "$@"; do
         case $pkg in
             ack)
-            if [ "$PKGMGR" = "apt" ]; then
+            if [ "$PKGMGR" = "apt-get" ]; then
                 result+=" ack-grep"
             else
                 result+=" $pkg"
