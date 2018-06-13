@@ -6,12 +6,12 @@ set -x
 source $(dirname "$0")/env/.zmenv/os_check.sh
 
 PKGS="ack stow \
-      git cmake \
+      git cmake python2.7 \
       vim zsh"
 
 get_pkg_man() {
     if is_apt_based; then
-        echo "apt"
+        echo "apt-get"
         return 0
     elif is_yum_based; then
         echo "yum"
@@ -36,7 +36,7 @@ get_pkg_install() {
     fi
 
     case "$PKGMGR" in
-        apt|yum|brew)
+        apt-get|yum|brew)
         echo "$PKGMGR install -y"
         return 0
         ;;
