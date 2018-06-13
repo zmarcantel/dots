@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
-
 source $(dirname "$0")/env/.zmenv/os_check.sh
 
 PKGS="ack stow \
