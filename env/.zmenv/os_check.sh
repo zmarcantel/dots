@@ -43,7 +43,7 @@ check_lsb_release() {
         return 1
     fi
 
-    if [ $(which lsb_release > /dev/null 2>&1) ]; then
+    if which lsb_release > /dev/null 2>&1; then
     	return $(lsb_release -a | grep "$1" > /dev/null 2>&1)
     fi
 
