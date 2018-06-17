@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 is_mac() {
     if [ "$(uname)" = "Darwin" ]; then
         return 0
