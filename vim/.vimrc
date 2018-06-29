@@ -52,9 +52,10 @@ set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 
 " global swap directory
-"if isdirectory('$HOME/.vim/swapfiles')
-    set directory=$HOME/.vim/swapfiles/
-"endif
+if !isdirectory('$HOME/.vim/swapfiles')
+    call mkdir("$HOME/.vim/swapfiles/", "p")
+endif
+set directory=$HOME/.vim/swapfiles/
 
 " allow <leader><number> window switching
 let i = 1
