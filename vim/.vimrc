@@ -53,7 +53,7 @@ highlight ColorColumn ctermbg=darkgray
 
 " global swap directory
 if !isdirectory('$HOME/.vim/swapfiles')
-    call mkdir("$HOME/.vim/swapfiles/", "p")
+    call mkdir($HOME . "/.vim/swapfiles/", "p")
 endif
 set directory=$HOME/.vim/swapfiles/
 
