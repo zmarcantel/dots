@@ -52,10 +52,11 @@ set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 
 " global swap directory
-if !isdirectory($HOME . '/.vim/swapfiles')
-    call mkdir($HOME . "/.vim/swapfiles/", "p")
+if !isdirectory($HOME.'/.vim/swapfiles')
+    execute 'echo "global swap directory not found, creating..."'
+    execute '! mkdir '.$HOME.'/.vim/swapfiles'
 endif
-set directory=$HOME/.vim/swapfiles/
+set directory=~/.vim/swapfiles/
 
 " allow <leader><number> window switching
 let i = 1

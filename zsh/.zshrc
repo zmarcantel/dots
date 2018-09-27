@@ -94,6 +94,9 @@ function source_all() {
     fi
 
     for f in $(find "$sourcepath" -maxdepth 1 -type f); do
+        if [[ $f == *.swp ]]; then
+            continue
+        fi
         source $f
     done
 }
