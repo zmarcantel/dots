@@ -33,6 +33,7 @@ Plugin 'fatih/vim-go'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'hashivim/vim-terraform.git'
 Plugin 'burnettk/vim-angular'
+Plugin 'posva/vim-vue'
 
 " fmting
 Plugin 'fatih/vim-hclfmt'
