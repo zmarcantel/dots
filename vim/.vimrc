@@ -83,6 +83,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " golang use goimports
 let g:go_fmt_command = "goimports"
+let g:syntastic_go_checkers = ['goimports', 'gofmt', 'govet', 'errcheck', 'go']
 " allow older vims not generate warning (Fedora 18 has barely lower version)
 let g:go_version_warning = 0
 
@@ -111,6 +112,7 @@ let NERDTreeShowHidden=1
 let NERDTreeCascadeSingleChildDir=0
 let NERDTreeCascadeOpenSingleChildDir=0
 nmap <c-n> :NERDTreeToggle<CR>
+nmap <c-m> :NERDTreeFind<CR>
 
 
 "***********************************************************
