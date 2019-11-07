@@ -51,6 +51,19 @@ set expandtab
 set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 
+"***********************************************************
+" Behavior
+"***********************************************************
+set visualbell
+set t_vb=
+
+set mouse=n
+
+
+"***********************************************************
+" swaps and windows
+"***********************************************************
+
 " global swap directory
 if !isdirectory($HOME.'/.vim/swapfiles')
     execute 'echo "global swap directory not found, creating..."'
@@ -91,14 +104,6 @@ let g:go_version_warning = 0
 let g:cpp_class_scope_highlight = 1
 
 "***********************************************************
-" Behavior
-"***********************************************************
-set visualbell
-set t_vb=
-
-set mouse=n
-
-"***********************************************************
 " NERDTree
 "***********************************************************
 let g:NERDTreeDirArrows=1
@@ -106,7 +111,6 @@ autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 " cursor to file on open
 autocmd VimEnter * NERDTree | wincmd p
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 let NERDTreeCascadeSingleChildDir=0
@@ -132,15 +136,20 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 "***********************************************************
-" Arista
+" language servers
 "***********************************************************
 
-" Include the system settings
-:if filereadable( "/etc/vimrc" )
-    source /etc/vimrc
-:endif
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-" Include Arista-specific settings
-:if filereadable( $VIM . "/vimfiles/arista.vim" )
-    "source $VIM/vimfiles/arista.vim
-:endif
+set completeopt+=preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif

@@ -30,17 +30,13 @@ Plugin 'vim-airline/vim-airline-themes'
 " syntax
 Plugin 'vim-syntastic/syntastic'
 Plugin 'fatih/vim-go'
-Plugin 'b4b4r07/vim-hcl'
-Plugin 'hashivim/vim-terraform.git'
-Plugin 'burnettk/vim-angular'
-Plugin 'posva/vim-vue'
 Plugin 'rust-lang/rust.vim'
 
-" fmting
-Plugin 'fatih/vim-hclfmt'
-
 " tools
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 
 

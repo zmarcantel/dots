@@ -2,9 +2,7 @@
 
 source $(dirname "$0")/env/.zmenv/os_check.sh
 
-PKGS="ack stow \
-      git cmake libpython2.7 libpython-dev \
-      vim zsh"
+PKGS="ack stow git vim zsh"
 
 get_pkg_man() {
     if is_apt_based; then
