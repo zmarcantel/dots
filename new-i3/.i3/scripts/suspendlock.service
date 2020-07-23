@@ -1,0 +1,14 @@
+# /etc/systemd/user/autolock.service
+
+[Unit]
+Description=display lock screen on suspend
+Before=suspend.target
+
+[Service]
+User=zach
+Environment=DISPLAY=:0
+ExecStart=/home/zach/.i3/scripts/lock
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=suspend.target

@@ -1,0 +1,13 @@
+# /etc/systemd/system/lockscreen-cache.service
+
+[Unit]
+Description=updates lockscreen cache from $HOME/.wallpapers
+Wants=lockscreen-cache.timer
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/usr/local/bin/betterlockscreen -u /home/zach/.wallpapers
+
+[Install]
+WantedBy=default.target

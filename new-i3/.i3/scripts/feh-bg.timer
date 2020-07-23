@@ -1,0 +1,12 @@
+# /etc/systemd/system/feh-bg.timer
+
+[Unit]
+Description=change background every 30sec
+Requires=feh.service
+
+[Timer]
+Unit=feh.service
+OnUnitInactiveSec=30s
+
+[Install]
+WantedBy=timers.target

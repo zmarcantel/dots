@@ -1,5 +1,7 @@
 " Author: Kim Silkebækken <kim.silkebaekken+vim@gmail.com>
 " Source repository: https://github.com/Lokaltog/vim-distinguished
+" Modified: Zach Marcantel <zmarcantel@gmail.com>
+" Source repository: https://github.com/zmarcantel/dots
 
 " Initialization {{{
 	set background=dark

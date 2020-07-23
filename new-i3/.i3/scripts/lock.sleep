@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# this file should be placed in /usr/lib/systemd/system-sleep/
+
+
+case $1 in
+  pre)
+    su - zach -c "/home/zach/.i3/scripts/lock now" > /tmp/lock.log 2>&1
+    ;;
+esac

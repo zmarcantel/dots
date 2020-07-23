@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -e
+
+step=5
+sink=0
+
+function set_volume() {
+    pactl set-sink-volume $sink $1
+}
+
+function get_volume() {
+    pactl list sinks | \
+        grep '^\s\+Volume' | \
+        awk 'match($0,/[0-9]+%/){print substr($0, RSTART, RLENGTH)}' | \
+        sed 's/%//g'
+}
+
+function volume_up() {
+    value=$(( curr_vol + step > 100 ? 100 - curr_vol : step ))
+    if [ "$curr_vol" -lt "100" ]; then
+        set_volume +$value%
+    fi
+}
+
+function volume_down() {
+    value=$(( curr_vol - step < 0 ? curr_vol : step ))
+    if [ "$curr_vol" -gt "0" ]; then
+        set_volume -$value%
+    fi
+}
+
+curr_vol=$(get_volume)
+case $1 in
+    up)
+        volume_up
+        ;;
+    down)
+        volume_down
+        ;;
+    max)
+        set_volume 100%
+        ;;
+    min)
+        set_volume 0%
+        ;;
+    *)
+        echo "unknown operation: "$1
+        exit 128
+esac

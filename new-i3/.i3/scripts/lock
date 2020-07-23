@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+if [ -z "$DISPLAY" ]; then
+    export DISPLAY=:0
+fi
+
+TIMEOUT=30
+
+# turn off keyboard lights
+light -s 'sysfs/leds/chromeos::kbd_backlight' -S 0% || true
+
+# lock
+echo "locking..."
+betterlockscreen -l --off $TIMEOUT

@@ -19,7 +19,7 @@ function format_staged() {
     if [ $staged -eq 0 ]; then
         echo ""
     else
-        echo "%{$fg_bold[green]%}●"$staged"%{$reset_color%}"
+        echo "%{$fg_bold[green]%}>"$staged"%{$reset_color%}"
     fi
 }
 
@@ -33,7 +33,7 @@ function format_unstaged() {
     if [ $unstaged -eq 0 ]; then
         echo ""
     else
-        echo "%{$fg_bold[yellow]%}♦"$unstaged"%{$reset_color%}"
+        echo "%{$fg_bold[yellow]%}#"$unstaged"%{$reset_color%}"
     fi
 }
 
@@ -48,7 +48,7 @@ function format_untracked() {
     if [ $untracked -eq 0 ]; then
         echo ""
     else
-        echo "%{$fg_bold[red]%}\x2B"$untracked"%{$reset_color%}"
+        echo "%{$fg_bold[red]%}+"$untracked"%{$reset_color%}"
     fi
 }
 
@@ -62,7 +62,7 @@ function format_conflicts() {
     if [ $conflicts -eq 0 ]; then
         echo ""
     else
-        echo "%{$fg_bold[red]%}✖"$conflicts"%{$reset_color%}"
+        echo "%{$fg_bold[red]%}x"$conflicts"%{$reset_color%}"
     fi
 }
 
@@ -79,10 +79,10 @@ function format_diff() {
     result=""
 
     if [[ $behind -gt 0 ]]; then
-        result+="%{$fg_bold[red]%}↓"$behind"%{$reset_color%}"
+        result+="%{$fg_bold[red]%}↓ "$behind"%{$reset_color%}"
     fi
     if [[ $ahead -gt 0 ]]; then
-       result+="%{$fg_bold[green]%}↑"$ahead"%{$reset_color%}"
+       result+="%{$fg_bold[green]%}↑ "$ahead"%{$reset_color%}"
     fi
 
     echo $result

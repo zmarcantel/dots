@@ -1,0 +1,12 @@
+# /etc/systemd/system/lockscreen-cache.timer
+
+[Unit]
+Description=update the lockscreen cache daily
+Requires=lockscreen-cache.service
+
+[Timer]
+Unit=lockscreen-cache.service
+OnUnitInactiveSec=15m
+
+[Install]
+WantedBy=timers.target

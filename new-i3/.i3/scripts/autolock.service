@@ -1,0 +1,12 @@
+# /etc/systemd/user/autolock.service
+
+[Unit]
+Description=start xautolock calling into betterlockscreen
+Wants=autolock.timer
+
+[Service]
+Environment=IDLE_MINS=5
+ExecStart=/home/zach/.i3/scripts/autolock
+
+[Install]
+WantedBy=default.target

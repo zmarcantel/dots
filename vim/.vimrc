@@ -2,9 +2,9 @@ set nocompatible
 filetype off
 
 " include the Vundle 'header'
-source ~/.vim_includes
+source $HOME/.vim_includes
 
-set rtp+=~/.vim
+set rtp+=$HOME/.vim
 
 
 "**********************************************************
@@ -69,7 +69,7 @@ if !isdirectory($HOME.'/.vim/swapfiles')
     execute 'echo "global swap directory not found, creating..."'
     execute '! mkdir '.$HOME.'/.vim/swapfiles'
 endif
-set directory=~/.vim/swapfiles/
+set directory=$HOME/.vim/swapfiles/
 
 " allow <leader><number> window switching
 let i = 1
@@ -96,7 +96,6 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " golang use goimports
 let g:go_fmt_command = "goimports"
-let g:syntastic_go_checkers = ['goimports', 'gofmt', 'govet', 'errcheck', 'go']
 " allow older vims not generate warning (Fedora 18 has barely lower version)
 let g:go_version_warning = 0
 
@@ -127,6 +126,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_go_checkers = ['goimports', 'gofmt', 'govet', 'errcheck', 'go']
+
+function CargoEnableXCheck()
+    let g:rust_cargo_check_cmd = 'xcheck'
+endfunction
+let g:rust_cargo_avoid_whole_workspace = 1
 
 "***********************************************************
 " CtrlP
@@ -146,10 +151,11 @@ inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 set completeopt+=preview
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'cmd': {server_info->['rls']},
         \ 'whitelist': ['rust'],
         \ })
 endif

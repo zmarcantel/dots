@@ -1,0 +1,13 @@
+# /etc/systemd/system/feh-bg.service
+
+[Unit]
+Description=sets a random wallpaper from $HOME/.wallpapers
+Wants=feh.timer
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/feh --randomize --bg-fill /home/zach/.wallpapers
+
+[Install]
+WantedBy=default.target

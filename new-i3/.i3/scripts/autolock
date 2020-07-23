@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+IDLE_MSG='LOCKING screen in 30 seconds'
+
+xautolock \
+  -time $IDLE_MINS \
+  -locker "$HOME/.i3/scripts/lock" \
+  -notify 30 \
+  -notifier "notify-send -u critical -t 10000 -- $IDLE_MSG"
