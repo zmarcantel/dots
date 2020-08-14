@@ -102,6 +102,9 @@ let g:go_version_warning = 0
 " enhanced c++ highlighting
 let g:cpp_class_scope_highlight = 1
 
+" rust
+let g:rustfmt_autosave = 1
+
 "***********************************************************
 " NERDTree
 "***********************************************************
